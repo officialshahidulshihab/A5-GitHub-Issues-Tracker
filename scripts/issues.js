@@ -1,4 +1,34 @@
 const issuesContainer=document.getElementById('issues-container')
+const counterContainer=document.getElementById('issues-counter-container')
+const allBtn=document.getElementById('allBtn')
+const openBtn=document.getElementById('openBtn')
+const closeBtn=document.getElementById('closeBtn')
+
+const tapBtn=(id)=>{
+
+    allBtn.classList.remove('btn-primary')
+    openBtn.classList.remove('btn-primary')
+    closeBtn.classList.remove('btn-primary')
+    
+    if(id==='allBtn'){
+        
+        allBtn.classList.add('btn-primary')
+        return;
+    }
+    else if(id==='openBtn'){
+        openBtn.classList.add('btn-primary')
+        return;
+        
+    }
+    else if(id==='closeBtn'){
+        closeBtn.classList.add('btn-primary')
+        return;
+
+    }
+
+
+}
+
 
 
 
@@ -15,14 +45,17 @@ const createElements = (arr) => {
 }
 
 
-const loadAllIssues=()=>{
+const loadAllIssues=(id)=>{
     const url="https://phi-lab-server.vercel.app/api/v1/lab/issues"
     fetch(url)
     .then(res=>res.json())
     .then(data=>displayAllIssues(data.data))
+    
 }
 
 const displayAllIssues=(issues)=>{
+
+    counterContainer.innerText=`${issues.length} Issues`
     
     issuesContainer.innerHTML='';
     issues.forEach(issue => {
@@ -100,23 +133,8 @@ else {
 
 }
 
-
-
-// {
-//     "id": 1,
-//     "title": "Fix navigation menu on mobile devices",
-//     "description": "The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.",
-//     "status": "open",
-//     "labels": [
-//         "bug",
-//         "help wanted"
-//     ],
-//     "priority": "high",
-//     "author": "john_doe",
-//     "assignee": "jane_smith",
-//     "createdAt": "2024-01-15T10:30:00Z",
-//     "updatedAt": "2024-01-15T10:30:00Z"
-// }
+loadAllIssues()
+tapBtn('allBtn')
 
 
 

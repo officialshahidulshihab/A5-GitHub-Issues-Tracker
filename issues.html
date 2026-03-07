@@ -53,9 +53,9 @@
     <section class="w-11/12 mx-auto mt-10 ">
 
         <div class="bg-base-100 shadow-sm p-5">
-            <button onclick="loadAllIssues()" class="btn btn-primary w-[120px]">All</button>
-            <button class="btn  w-[120px]">Open</button>
-            <button class="btn  w-[120px]">Closed</button>
+            <button onclick="tapBtn('allBtn')"   id="allBtn" class="btn btn-primary w-[120px]">All</button>
+            <button onclick="tapBtn('openBtn')"  id="openBtn" class="btn  w-[120px]">Open</button>
+            <button onclick="tapBtn('closeBtn')" id="closeBtn" class="btn  w-[120px]">Closed</button>
 
         </div>
 
@@ -71,8 +71,8 @@
 
                 </div>
 
-                <div>
-                    <p class="text-[20px] font-semibold">50 Issues</p>
+                <div >
+                    <p id="issues-counter-container" class="text-[20px] font-semibold"></p>
                     <p class="text-[#64748B]">Track and manage your project issues</p>
                 </div>
 
