@@ -4,6 +4,8 @@ const allBtn=document.getElementById('allBtn')
 const openBtn=document.getElementById('openBtn')
 const closeBtn=document.getElementById('closeBtn')
 
+
+
 const tapBtn=(id)=>{
 
     allBtn.classList.remove('btn-primary')
@@ -52,6 +54,11 @@ const loadAllIssues=(id)=>{
     .then(data=>displayAllIssues(data.data))
     
 }
+
+allBtn.addEventListener('click', ()=>{
+    tapBtn('allBtn')
+    loadAllIssues()
+})
 
 const displayAllIssues=(issues)=>{
 
@@ -133,8 +140,194 @@ else {
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const loadCloseIssues=()=>{
+    const url="https://phi-lab-server.vercel.app/api/v1/lab/issues"
+    fetch(url)
+    .then(res=>res.json())
+    .then(data=>displayCloseIssues(data.data))
+}
+
+closeBtn.addEventListener('click', ()=>{
+    tapBtn('closeBtn')
+    loadCloseIssues()
+})
+
+const displayCloseIssues=(issues)=>{
+    issuesContainer.innerHTML='';
+    const closeIssues =issues.filter(issue=>issue.status==='closed')
+    counterContainer.innerText=`${closeIssues.length} Issues`
+    closeIssues.forEach(issue => {
+
+        let priorityClass = '';
+
+if (issue.priority === 'high') {
+    priorityClass = 'bg-[#FEECEC] text-[#EF4444]';
+} 
+else if (issue.priority === 'medium') {
+    priorityClass = 'bg-[#FFF6D1] text-[F59E0B]';
+} 
+else {
+    priorityClass = 'bg-[#EFEFEF] text-[#9CA3AF]';
+}
+
+const div=document.createElement('div')
+        div.className='bg-base-100 shadow-sm p-4 rounded-lg w-full h-full'
+        div.innerHTML=`
+    
+        <div class="flex justify-between ">
+                    <div class="w-[30px] h-[30px]  flex items-center justify-center rounded-full">
+                       <img src="./assets/Closed- Status .png" alt="">
+    
+                    </div>
+                    <div class="${priorityClass} w-[70px] flex justify-center items-center text-center rounded-2xl p-1">
+                        <p class="font-medium ">${issue.priority}</p>
+    
+                    </div>
+                </div>
+    
+                <div class="mt-3 space-y-2 mb-3">
+                    <p class="font-semibold text-[14px]">${issue.title}</p>
+                    <p class="line-clamp-2 text-[12px] text-[#64748B]">${issue.description}</p>
+                </div>
+    
+                <div class="flex gap-3 ">
+                    ${createElements(issue.labels)}
+                </div>
+    
+                
+
+                <div class="flex justify-between mt-4">
+                <div class="">
+                    <p class="text-[12px] text-[#64748B]">#1
+                        by ${issue.author}</p> 
+                        <p class="text-[12px] text-[#64748B]">${issue.assignee}</p>
+
+                </div>
+
+                <div >
+
+
+                    <p class="text-[12px] text-[#64748B]">${issue.createdAt}</p>
+                    <p class="text-[12px] text-[#64748B]">${issue.updatedAt}</p>
+                </div>
+            </div>
+    
+                
+    
+        
+        `
+        issuesContainer.appendChild(div)
+
+
+        
+    });
+
+}
+
+
+
+const loadOpenIssues =() =>{
+    const url="https://phi-lab-server.vercel.app/api/v1/lab/issues"
+    fetch(url)
+    .then(res=>res.json())
+    .then(data=>displayOpenIssues(data.data))
+
+}
+
+openBtn.addEventListener('click', ()=>{
+    tapBtn('openBtn')
+    loadOpenIssues()
+})
+
+const displayOpenIssues=(issues)=>{
+    issuesContainer.innerHTML='';
+    const openIssues =issues.filter(issue=>issue.status==='open')
+    counterContainer.innerText=`${openIssues.length} Issues`
+    openIssues.forEach(issue => {
+
+        let priorityClass = '';
+
+if (issue.priority === 'high') {
+    priorityClass = 'bg-[#FEECEC] text-[#EF4444]';
+} 
+else if (issue.priority === 'medium') {
+    priorityClass = 'bg-[#FFF6D1] text-[F59E0B]';
+} 
+else {
+    priorityClass = 'bg-[#EFEFEF] text-[#9CA3AF]';
+}
+
+const div=document.createElement('div')
+        div.className='bg-base-100 shadow-sm p-4 rounded-lg w-full h-full'
+        div.innerHTML=`
+    
+        <div class="flex justify-between ">
+                    <div class="w-[30px] h-[30px]  flex items-center justify-center rounded-full">
+                       <img src='./assets/Open-Status.png'>
+    
+                    </div>
+                    <div class="${priorityClass} w-[70px] flex justify-center items-center text-center rounded-2xl p-1">
+                        <p class="font-medium ">${issue.priority}</p>
+    
+                    </div>
+                </div>
+    
+                <div class="mt-3 space-y-2 mb-3">
+                    <p class="font-semibold text-[14px]">${issue.title}</p>
+                    <p class="line-clamp-2 text-[12px] text-[#64748B]">${issue.description}</p>
+                </div>
+    
+                <div class="flex gap-3 ">
+                    ${createElements(issue.labels)}
+                </div>
+    
+                
+
+                <div class="flex justify-between mt-4">
+                <div class="">
+                    <p class="text-[12px] text-[#64748B]">#1
+                        by ${issue.author}</p> 
+                        <p class="text-[12px] text-[#64748B]">${issue.assignee}</p>
+
+                </div>
+
+                <div >
+
+
+                    <p class="text-[12px] text-[#64748B]">${issue.createdAt}</p>
+                    <p class="text-[12px] text-[#64748B]">${issue.updatedAt}</p>
+                </div>
+            </div>
+    
+                
+    
+        
+        `
+        issuesContainer.appendChild(div)
+
+
+        
+    });
+}
+
 loadAllIssues()
 tapBtn('allBtn')
+
+
 
 
 
