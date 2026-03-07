@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    
+
     <header>
         <div class="navbar bg-base-100 shadow-sm justify-between">
             <div class="flex gap-2 items-center">
@@ -34,15 +34,15 @@
             <div class="flex gap-2">
                 <div>
                     <label class="input">
-                    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
-                            stroke="currentColor">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <path d="m21 21-4.3-4.3"></path>
-                        </g>
-                    </svg>
-                    <input type="search" required placeholder="Search issues..." />
-                </label>
+                        <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                                stroke="currentColor">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.3-4.3"></path>
+                            </g>
+                        </svg>
+                        <input type="search" required placeholder="Search issues..." />
+                    </label>
                 </div>
 
                 <button class="btn btn-primary"><i class="fa-solid fa-plus"></i>New Issue</button>
@@ -51,11 +51,11 @@
     </header>
 
     <section class="w-11/12 mx-auto mt-10 ">
-       
+
         <div class="bg-base-100 shadow-sm p-5">
-             <button class="btn btn-primary w-[120px]">All</button>
-             <button class="btn  w-[120px]">Open</button>
-             <button class="btn  w-[120px]">Closed</button>
+            <button class="btn btn-primary w-[120px]">All</button>
+            <button class="btn  w-[120px]">Open</button>
+            <button class="btn  w-[120px]">Closed</button>
 
         </div>
 
@@ -65,17 +65,17 @@
         <div class="flex justify-between items-center">
             <div class="flex gap-2 items-center">
                 <div class="bg-[#ECE4FF] w-[50px] h-[50px] flex items-center justify-center rounded-full">
-                    <div >
+                    <div>
                         <img src="./assets/Aperture.png" alt="" class="">
                     </div>
-        
+
                 </div>
-    
-               <div>
-                 <p class="text-[20px] font-semibold">50 Issues</p>
-                <p class="text-[#64748B]">Track and manage your project issues</p>
-               </div>
-    
+
+                <div>
+                    <p class="text-[20px] font-semibold">50 Issues</p>
+                    <p class="text-[#64748B]">Track and manage your project issues</p>
+                </div>
+
             </div>
 
             <div class="space-x-2">
@@ -90,23 +90,52 @@
 
     <section class="w-11/12 mx-auto  bg-base-100 shadow-sm p-3 grid grid-cols-4 gap-3">
 
+
         <div class="bg-base-100 shadow-sm p-4 rounded-lg">
             <div class="flex justify-between">
                 <div class="w-[30px] h-[30px] bg-[#CBFADB] flex items-center justify-center rounded-full">
-                    <i class="fa-regular fa-circle-dot text-[#00A96E]"></i>
-                    <!-- <i class="fa-regular fa-circle-check"></i> -->
+                    <img src="./assets/Open-Status.png" alt="">
+
                 </div>
-                <div class="bg-[#FEECEC] w-[70px] flex justify-center items-center text-center rounded-lg ">
+                <div class="bg-[#FEECEC] w-[70px] flex justify-center items-center text-center rounded-2xl p-1">
                     <p class="font-medium text-[#EF4444] ">High</p>
-                    
+
                 </div>
             </div>
 
-            <div class="mt-3">
+            <div class="mt-3 space-y-2 mb-3">
                 <p class="font-semibold">Fix navigation menu on mobile devices</p>
-                <p class="line-clamp-2 text-[12px] text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
+                <p class="line-clamp-2 text-[12px] text-[#64748B]">The navigation menu doesn't collapse properly on
+                    mobile devices...</p>
             </div>
+
+            <div class="flex gap-3 ">
+                <div class="bg-[#FEECEC]  flex justify-center items-center text-center rounded-2xl pl-2 pr-2 p-1">
+                    <p class="font-medium text-[#EF4444] text-[12px]"><i class="fa-solid fa-bug"></i> BUG </p>
+                </div>
+                <div class="bg-[#FFF8DB] pl-2 pr-2 p-1 flex justify-center items-center text-center rounded-2xl ">
+                    <img src="./assets/Vector.png" alt=""><span class="text-[#D97706] text-[12px]">HELP
+                        WANTED</span>
+
+                </div>
+            </div>
+
+            <hr class="mt-3 text-[#E4E4E7] mb-3">
+
+            <p class="text-[12px] text-[#64748B]">#1
+                by john_doe</p>
+
+            <p class="text-[12px] text-[#64748B]" >1/15/2024</p>
+
+
+
         </div>
+
+
+
+
+
+
 
 
 
