@@ -2,10 +2,7 @@ const userName=document.getElementById('user-name')
 const userPassword=document.getElementById('user-password')
 const SignButton=document.getElementById('sing-in-btn')
 
-// const createElements= (arr)=>{
-//     const htmlElements=arr.map((el)=> `<span class="btn">${el}</span>`)
-//     return(htmlElements.join(" "));
-// }
+
 
 SignButton.addEventListener('click', function(){
     const userNameValue=userName.value

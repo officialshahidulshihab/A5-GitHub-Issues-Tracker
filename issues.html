@@ -53,7 +53,7 @@
     <section class="w-11/12 mx-auto mt-10 ">
 
         <div class="bg-base-100 shadow-sm p-5">
-            <button class="btn btn-primary w-[120px]">All</button>
+            <button onclick="loadAllIssues()" class="btn btn-primary w-[120px]">All</button>
             <button class="btn  w-[120px]">Open</button>
             <button class="btn  w-[120px]">Closed</button>
 
@@ -88,14 +88,14 @@
 
     </section>
 
-    <section class="w-11/12 mx-auto  bg-base-100 shadow-sm p-3 grid grid-cols-4 gap-3">
+    <section id="issues-container" class="w-11/12 mx-auto  bg-base-100 shadow-sm p-3 grid grid-cols-4 gap-3">
 
 
-        <div class="bg-base-100 shadow-sm p-4 rounded-lg">
+        <!-- <div class="bg-base-100 shadow-sm p-4 rounded-lg">
             <div class="flex justify-between">
                 <div class="w-[30px] h-[30px] bg-[#CBFADB] flex items-center justify-center rounded-full">
-                    <img src="./assets/Open-Status.png" alt="">
-
+                    <p><img src='./assets/Open-Status.png'></p>
+                    
                 </div>
                 <div class="bg-[#FEECEC] w-[70px] flex justify-center items-center text-center rounded-2xl p-1">
                     <p class="font-medium text-[#EF4444] ">High</p>
@@ -122,14 +122,26 @@
 
             <hr class="mt-3 text-[#E4E4E7] mb-3">
 
-            <p class="text-[12px] text-[#64748B]">#1
-                by john_doe</p>
 
-            <p class="text-[12px] text-[#64748B]" >1/15/2024</p>
+            <div class="flex justify-between">
+                <div class="">
+                    <p class="text-[12px] text-[#64748B]">#1
+                        by john_doe</p>
+                    <p class="text-[12px] text-[#64748B]">left</p>
+
+                </div>
+
+                <div>
+
+
+                    <p class="text-[12px] text-[#64748B]">right top</p>
+                    <p class="text-[12px] text-[#64748B]">right bottom</p>
+                </div>
+            </div>
 
 
 
-        </div>
+        </div> -->
 
 
 
@@ -140,6 +152,8 @@
 
 
     </section>
+
+    <script src="./scripts/issues.js"></script>
 </body>
 
 </html>
