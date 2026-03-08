@@ -13,7 +13,7 @@ if (issue.priority === 'high') {
     priorityClass = 'bg-[#FEECEC] text-[#EF4444]';
 } 
 else if (issue.priority === 'medium') {
-    priorityClass = 'bg-[#FFF6D1] text-[F59E0B]';
+    priorityClass = 'bg-[#FFF6D1] text-[#F59E0B]';
 } 
 else {
     priorityClass = 'bg-[#EFEFEF] text-[#9CA3AF]';
@@ -68,8 +68,6 @@ const spierManagement=(status)=>{
     }
 }
 
-
-
 const tapBtn=(id)=>{
 
     allBtn.classList.remove('btn-primary')
@@ -95,9 +93,6 @@ const tapBtn=(id)=>{
 
 }
 
-
-
-
 const createElements = (arr) => {
   const htmlElements = arr.map((el) => `
     <div class="bg-[#FFF8DB] flex justify-center items-center text-center rounded-2xl px-2 py-1">
@@ -109,7 +104,6 @@ const createElements = (arr) => {
 
   return htmlElements.join(" ");
 }
-
 
 const loadAllIssues=(id)=>{
     spierManagement(true)
@@ -124,6 +118,7 @@ allBtn.addEventListener('click', ()=>{
     tapBtn('allBtn')
     loadAllIssues()
 })
+
 
 const displayAllIssues=(issues)=>{
 
@@ -143,7 +138,7 @@ if (issue.priority === 'high') {
     priorityClass = 'bg-[#FEECEC] text-[#EF4444]';
 } 
 else if (issue.priority === 'medium') {
-    priorityClass = 'bg-[#FFF6D1] text-[F59E0B]';
+    priorityClass = 'bg-[#FFF6D1] text-[#F59E0B]';
 } 
 else {
     priorityClass = 'bg-[#EFEFEF] text-[#9CA3AF]';
@@ -184,7 +179,7 @@ const borderColor=issue.status==='open'? 'border-t-4 border-t-[#00A96E]' : 'bord
 
                 <div class="flex justify-between mt-4">
                 <div class="">
-                    <p class="text-[12px] text-[#64748B]">#1
+                    <p class="text-[12px] text-[#64748B]">#${issue.id}
                         by ${issue.author}</p> 
                         <p class="text-[12px] text-[#64748B]">${issue.assignee}</p>
 
@@ -213,19 +208,6 @@ div.addEventListener('click', () => openModal(issue))
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 const loadCloseIssues=()=>{
     spierManagement(true)
     const url="https://phi-lab-server.vercel.app/api/v1/lab/issues"
@@ -234,10 +216,12 @@ const loadCloseIssues=()=>{
     .then(data=>displayCloseIssues(data.data))
 }
 
+
 closeBtn.addEventListener('click', ()=>{
     tapBtn('closeBtn')
     loadCloseIssues()
 })
+
 
 const displayCloseIssues=(issues)=>{
     issuesContainer.innerHTML='';
@@ -251,7 +235,7 @@ if (issue.priority === 'high') {
     priorityClass = 'bg-[#FEECEC] text-[#EF4444]';
 } 
 else if (issue.priority === 'medium') {
-    priorityClass = 'bg-[#FFF6D1] text-[F59E0B]';
+    priorityClass = 'bg-[#FFF6D1] text-[#F59E0B]';
 } 
 else {
     priorityClass = 'bg-[#EFEFEF] text-[#9CA3AF]';
@@ -288,7 +272,7 @@ const div=document.createElement('div')
 
                 <div class="flex justify-between mt-4">
                 <div class="">
-                    <p class="text-[12px] text-[#64748B]">#1
+                    <p class="text-[12px] text-[#64748B]">#${issue.id}
                         by ${issue.author}</p> 
                         <p class="text-[12px] text-[#64748B]">${issue.assignee}</p>
 
@@ -307,6 +291,8 @@ const div=document.createElement('div')
         
         `
         issuesContainer.appendChild(div)
+        div.addEventListener('click', () => openModal(issue))
+
 
 
         
@@ -314,7 +300,6 @@ const div=document.createElement('div')
     spierManagement(false)
 
 }
-
 
 
 const loadOpenIssues =() =>{
@@ -326,10 +311,12 @@ const loadOpenIssues =() =>{
 
 }
 
+
 openBtn.addEventListener('click', ()=>{
     tapBtn('openBtn')
     loadOpenIssues()
 })
+
 
 const displayOpenIssues=(issues)=>{
     issuesContainer.innerHTML='';
@@ -343,7 +330,7 @@ if (issue.priority === 'high') {
     priorityClass = 'bg-[#FEECEC] text-[#EF4444]';
 } 
 else if (issue.priority === 'medium') {
-    priorityClass = 'bg-[#FFF6D1] text-[F59E0B]';
+    priorityClass = 'bg-[#FFF6D1] text-[#F59E0B]';
 } 
 else {
     priorityClass = 'bg-[#EFEFEF] text-[#9CA3AF]';
@@ -380,7 +367,7 @@ const div=document.createElement('div')
 
                 <div class="flex justify-between mt-4">
                 <div class="">
-                    <p class="text-[12px] text-[#64748B]">#1
+                    <p class="text-[12px] text-[#64748B]">#${issue.id}
                         by ${issue.author}</p> 
                         <p class="text-[12px] text-[#64748B]">${issue.assignee}</p>
 
@@ -400,6 +387,8 @@ const div=document.createElement('div')
         `
         
         issuesContainer.appendChild(div)
+        div.addEventListener('click', () => openModal(issue))
+
 
 
         
@@ -407,9 +396,23 @@ const div=document.createElement('div')
     spierManagement(false)
 }
 
+
 loadAllIssues()
 tapBtn('allBtn')
 
+
+document.getElementById("input-submit").addEventListener('click', ()=>{
+    const input=document.getElementById('input-search')
+    const searchValue=input.value.trim();
+    if(!searchValue) return
+     spierManagement(true)
+    const url=`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`
+    fetch(url)
+    .then(res=>res.json())
+    .then(data=> displayAllIssues(data.data))
+
+    
+})
 
 
 
