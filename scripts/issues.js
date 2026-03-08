@@ -3,6 +3,70 @@ const counterContainer=document.getElementById('issues-counter-container')
 const allBtn=document.getElementById('allBtn')
 const openBtn=document.getElementById('openBtn')
 const closeBtn=document.getElementById('closeBtn')
+const spinerContainer=document.getElementById('spiner-container')
+
+const openModal=(issue)=>{
+
+     let priorityClass = '';
+
+if (issue.priority === 'high') {
+    priorityClass = 'bg-[#FEECEC] text-[#EF4444]';
+} 
+else if (issue.priority === 'medium') {
+    priorityClass = 'bg-[#FFF6D1] text-[F59E0B]';
+} 
+else {
+    priorityClass = 'bg-[#EFEFEF] text-[#9CA3AF]';
+}
+
+   const borderColor=issue.status==='open'? ' bg-[#00A96E]' : 'bg-[#A855F7]'
+    document.getElementById('modal-container').innerHTML=`
+
+     <h3 class="text-lg font-bold">${issue.title}</h3>
+                <div class="mt-2.5">
+                    <span class="text-[12px] text-white rounded-2xl font-medium ${borderColor} p-2">${issue.status}</span> <span class="text-[12px] text-[#64748B]"><i class="fa-solid fa-circle"></i>Open by ${issue.author}</span> <span class="text-[12px] text-[#64748B]"><i class="fa-solid fa-circle"></i>${issue.createdAt}</span>
+                </div>
+                <div class="mt-3 flex gap-3">
+                 ${createElements(issue.labels)}
+                
+
+                </div>
+
+                <p class="py-4 mt-3">${issue.description}</p>
+
+                <div class="mt-4 bg-base-200 grid grid-cols-2 grid-rows-2 p-4">
+                    <div>Assignee:</div>
+                    <div>Priority:</div>
+                    <div>${issue.assignee}</div>
+                    <div class="${priorityClass} w-[80px] text-center rounded-2xl">${issue.priority}</div>
+
+
+
+                </div>
+
+                <div class="modal-action">
+                    <form method="dialog">
+                        
+                        <button class="btn btn-primary">Close</button>
+                    </form>
+                </div>
+    
+    
+    `
+    document.getElementById('issue-modal').showModal()
+
+}
+
+const spierManagement=(status)=>{
+    if(status===true){
+        spinerContainer.classList.remove('hidden')
+        issuesContainer.classList.add('hidden')
+    }else if(status===false){
+        spinerContainer.classList.add('hidden')
+        issuesContainer.classList.remove('hidden')
+
+    }
+}
 
 
 
@@ -48,6 +112,7 @@ const createElements = (arr) => {
 
 
 const loadAllIssues=(id)=>{
+    spierManagement(true)
     const url="https://phi-lab-server.vercel.app/api/v1/lab/issues"
     fetch(url)
     .then(res=>res.json())
@@ -84,12 +149,15 @@ else {
     priorityClass = 'bg-[#EFEFEF] text-[#9CA3AF]';
 }
 
+
+const borderColor=issue.status==='open'? 'border-t-4 border-t-[#00A96E]' : 'border-t-4 border-t-[#A855F7]'
+
       
 
        
         
         const div=document.createElement('div')
-        div.className='bg-base-100 shadow-sm p-4 rounded-lg w-full h-full'
+        div.className=`bg-base-100 shadow-sm p-4 rounded-lg w-full h-full ${borderColor} `
         div.innerHTML=`
     
         <div class="flex justify-between ">
@@ -135,8 +203,12 @@ else {
         
         `
         issuesContainer.appendChild(div)
+div.addEventListener('click', () => openModal(issue))
+
+
         
     });
+    spierManagement(false)
 
 }
 
@@ -155,6 +227,7 @@ else {
 
 
 const loadCloseIssues=()=>{
+    spierManagement(true)
     const url="https://phi-lab-server.vercel.app/api/v1/lab/issues"
     fetch(url)
     .then(res=>res.json())
@@ -184,8 +257,11 @@ else {
     priorityClass = 'bg-[#EFEFEF] text-[#9CA3AF]';
 }
 
+ 
+
+
 const div=document.createElement('div')
-        div.className='bg-base-100 shadow-sm p-4 rounded-lg w-full h-full'
+        div.className=`bg-base-100 shadow-sm p-4 rounded-lg w-full h-full border-t-4 border-t-[#A855F7]`
         div.innerHTML=`
     
         <div class="flex justify-between ">
@@ -235,12 +311,14 @@ const div=document.createElement('div')
 
         
     });
+    spierManagement(false)
 
 }
 
 
 
 const loadOpenIssues =() =>{
+    spierManagement(true)
     const url="https://phi-lab-server.vercel.app/api/v1/lab/issues"
     fetch(url)
     .then(res=>res.json())
@@ -271,8 +349,11 @@ else {
     priorityClass = 'bg-[#EFEFEF] text-[#9CA3AF]';
 }
 
+ 
+
+
 const div=document.createElement('div')
-        div.className='bg-base-100 shadow-sm p-4 rounded-lg w-full h-full'
+        div.className='bg-base-100 shadow-sm p-4 rounded-lg w-full h-full border-t-4 border-t-[#00A96E]'
         div.innerHTML=`
     
         <div class="flex justify-between ">
@@ -317,11 +398,13 @@ const div=document.createElement('div')
     
         
         `
+        
         issuesContainer.appendChild(div)
 
 
         
     });
+    spierManagement(false)
 }
 
 loadAllIssues()

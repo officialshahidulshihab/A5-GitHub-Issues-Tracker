@@ -23,6 +23,17 @@
 
 <body>
 
+    <section>
+        
+        
+        <dialog id="issue-modal" class="modal">
+            <div id="modal-container" class="modal-box">
+               
+                
+            </div>
+        </dialog>
+    </section>
+
     <header>
         <div class="navbar bg-base-100 shadow-sm justify-between">
             <div class="flex gap-2 items-center">
@@ -53,8 +64,8 @@
     <section class="w-11/12 mx-auto mt-10 ">
 
         <div class="bg-base-100 shadow-sm p-5">
-            <button onclick="tapBtn('allBtn')"   id="allBtn" class="btn btn-primary w-[120px]">All</button>
-            <button   id="openBtn" class="btn  w-[120px]">Open</button>
+            <button onclick="tapBtn('allBtn')" id="allBtn" class="btn btn-primary w-[120px]">All</button>
+            <button id="openBtn" class="btn  w-[120px]">Open</button>
             <button onclick="tapBtn('closeBtn')" id="closeBtn" class="btn  w-[120px]">Closed</button>
 
         </div>
@@ -71,7 +82,7 @@
 
                 </div>
 
-                <div >
+                <div>
                     <p id="issues-counter-container" class="text-[20px] font-semibold"></p>
                     <p class="text-[#64748B]">Track and manage your project issues</p>
                 </div>
@@ -86,6 +97,13 @@
 
 
 
+    </section>
+
+
+
+
+    <section id="spiner-container" class="flex justify-center items-center py-20 hidden">
+        <span class="loading loading-bars loading-xl"></span>
     </section>
 
     <section id="issues-container" class="w-11/12 mx-auto  bg-base-100 shadow-sm p-3 grid grid-cols-4 gap-3">
@@ -157,5 +175,3 @@
 </body>
 
 </html>
-
-
